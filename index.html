@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <section>
+    <div class="container">
+      <div class="col-md-6 text-center">
+        <h1 ondrop="drop(event)" ondragover="allowDrop(event)">Cписок моих дел на ближайшее время</h1>
+        <input id="inp" type="text" placeholder="Что нужно сделать?">
+        <button id="btn">Записать</button>
+        <div>
+          <ol id="quest"></ol>
+        </div>
+        <button id="del">Удалить Все!</button>
+      </div>
+      <div class="col-md-6">
+        <center>
+        <h2>Список выполненных дел</h2>
+        <div class="dragTo">
+          <p>Перенесите задания которые выполнили</p>
+        </div>
+        </center>
+      </div>
+    </div>
+  </section>
+
+    <script type="text/javascript">
+
+
+    function write(){
+        var newLi = document.createElement('li');
+        newLi.innerHTML = document.getElementById("inp").value;
+        quest.appendChild(newLi);
+        document.getElementById("inp").value = "";
+        document.getElementById('del').style.display='block';
+        newLi.className = 'draggable';
+        return;
+      }
+
+      function del(){
+        document.getElementById( "quest" ). innerHTML = "";
+        document.getElementById('del').style.display='none';
+        return;
+      }
+
+      document.getElementById('btn').addEventListener('click', write);
+      document.getElementById('del').addEventListener('click', del);
+
+    </script>
+
+</body>
+</html>
