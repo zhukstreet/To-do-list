@@ -77,7 +77,7 @@ table {
 button{
   padding: 7px;
 }
-.dragTo{
+.droppable{
   border: 1px dashed grey;
   width: 66%;
 }
