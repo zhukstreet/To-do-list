@@ -99,4 +99,16 @@ button{
   padding: 8px;
   width: 66%;
   margin: 10px auto;
+  transition: 3s;
+}
+.close {
+    position: relative;
+    float: right;
+    padding: 0px 5px;
+}
+
+.close:hover {
+    background-color: #af0000;
+    color: white;
+    cursor: pointer;
 }

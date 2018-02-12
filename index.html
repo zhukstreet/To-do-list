@@ -12,7 +12,7 @@
   <section>
     <div class="container">
       <div class="col-md-6 text-center">
-        <h1 ondrop="drop(event)" ondragover="allowDrop(event)">Cписок моих дел на ближайшее время</h1>
+        <h1>Cписок моих дел на ближайшее время</h1>
         <input id="inp" type="text" placeholder="Что нужно сделать?">
         <button id="btn">Записать</button>
         <div>
@@ -33,25 +33,52 @@
 
     <script type="text/javascript">
 
-
+    //Функция при нажатии ""записать""
     function write(){
         var newLi = document.createElement('li');
         newLi.innerHTML = document.getElementById("inp").value;
-        quest.appendChild(newLi);
+        var inputValue = document.getElementById("inp").value;
+        var iv = document.createTextNode(inputValue);
+        if (inputValue === '') {
+            alert("Введите Дело !");
+          } else {
+            document.getElementById("quest").appendChild(newLi);
+          }
         document.getElementById("inp").value = "";
         document.getElementById('del').style.display='block';
         newLi.className = 'draggable';
+        
+        //Создание крестика для удаления одного дела 
+        var span = document.createElement("SPAN");
+        var txt = document.createTextNode("\u00D7");
+        span.className = "close";
+        span.appendChild(txt);
+        newLi.appendChild(span);
         return;
       }
+        
+      //обработчик клик удаления одного дела    
+      var close = document.getElementsByClassName("close");
+          close.onclick = function(e) {
+              var div = this.parentElement;
+              e.target.style.display = 'none';
+            }
 
+            
+
+
+      //Функция при нажатии ""Удалить Все""
       function del(){
         document.getElementById( "quest" ). innerHTML = "";
         document.getElementById('del').style.display='none';
         return;
       }
 
+      //События при нажатии на кнопки
       document.getElementById('btn').addEventListener('click', write);
       document.getElementById('del').addEventListener('click', del);
+        
+
 
     </script>
 
