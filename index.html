@@ -23,7 +23,7 @@
       <div class="col-md-6">
         <center>
         <h2>Список выполненных дел</h2>
-        <div class="droppable">
+        <div class="dragTo">
           <p>Перенесите задания которые выполнили</p>
         </div>
         </center>
@@ -59,9 +59,10 @@
         
       //обработчик клик удаления одного дела    
       var close = document.getElementById("quest");
-          close.onclick = function(e) {
-	            e.target.parentNode.style.display = 'none';
+          closes = function() {
+	            this.target.parentNode.removeChild(li);
             }
+      close.addEventListener('click', closes)      
 
             
 
@@ -76,6 +77,7 @@
       //События при нажатии на кнопки
       document.getElementById('btn').addEventListener('click', write);
       document.getElementById('del').addEventListener('click', del);
+        
 
 
     </script>
